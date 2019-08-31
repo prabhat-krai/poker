@@ -2,6 +2,14 @@ def poker(hands):
     "Return the best hand: poker([hand,...]) => hand"
     return max(hands, key=hand_rank)
 
+def flush(ranks):
+    return (max(ranks) - min(ranks) == 4) and len(set(ranks)) == 5
+
+def straight(hand):
+    suits = [s for r,s in hand]
+    return len(set(suits)) == 1
+
+
 def hand_rank(hand):
     ranks = card_ranks(hand)
     if straight(ranks) and flush(hand):            # straight flush
