@@ -33,6 +33,10 @@ def test():
     sf = "6C 7C 8C 9C TC".split() # Straight Flush
     fk = "9D 9H 9S 9C 7D".split() # Four of a Kind
     fh = "TD TC TH 7C 7D".split() # Full House
+    assert straight([9,8,7,6,5]) == True
+    assert straight([9,8,8,6,5]) == False
+    assert flush(sf) == True
+    assert flush(fk) == False
     assert card_ranks(sf) == [10, 9, 8, 7, 6]
     assert card_ranks(fk) == [9, 9, 9, 9, 7]
     assert card_ranks(fh) == [10, 10, 10, 7, 7]
