@@ -41,6 +41,15 @@ def test():
     sf = "6C 7C 8C 9C TC".split() # Straight Flush
     fk = "9D 9H 9S 9C 7D".split() # Four of a Kind
     fh = "TD TC TH 7C 7D".split() # Full House
+    tp = "5S 5H 9C 9H 6S".split() # Two Pairs
+    fkranks = card_ranks(fk)
+    tpranks = card_ranks(tp)
+    assert kind(4, fkranks) == 9
+    assert kind(3, fkranks) == None
+    assert kind(2, fkranks) == None
+    assert kind(1, fkranks) == 7
+    assert two_pair(fkranks) == None
+    assert two_pair(tpranks) == (9, 5)
     assert straight([9,8,7,6,5]) == True
     assert straight([9,8,8,6,5]) == False
     assert flush(sf) == True
