@@ -23,10 +23,11 @@ def hand_rank(hand):
     else:                                          # high card
         return (0, ranks)
 
-def card_ranks():
-    pass
-
-
+def card_ranks(hand):
+    ranks = ['--23456789TJQKA'.index(r) for r,s in hand]
+    ranks.sort(reverse = True)
+    return ranks
+    
 def test():
     "Test cases for the functions in poker program"
     sf = "6C 7C 8C 9C TC".split() # Straight Flush
