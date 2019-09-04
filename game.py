@@ -3,13 +3,28 @@ def poker(hands):
     return max(hands, key=hand_rank)
 
 def flush(ranks):
-    return (max(ranks) - min(ranks) == 4) and len(set(ranks)) == 5
-
-def straight(hand):
     suits = [s for r,s in hand]
     return len(set(suits)) == 1
+    
 
+def straight(hand):
+    return (max(ranks) - min(ranks) == 4) and len(set(ranks)) == 5
+    
 
+def kind(n, ranks):
+    for rank in ranks:
+        if (ranks.count(rank) == n):
+            return rank
+    return None
+
+def two_pair(ranks):
+    pair = kind(2, ranks)   
+    lowpair = kind(2, list(reversed(ranks)))
+    if(pair and lowpair != pair):
+        return (pair, lowpair)
+    else:
+        return False
+        
 def hand_rank(hand):
     ranks = card_ranks(hand)
     if straight(ranks) and flush(hand):            # straight flush
