@@ -86,5 +86,3 @@ def test():
     assert hand_rank(fk) == (7, 9, 7)
     assert hand_rank(fh) == (6, 10, 7)
     return 'tests pass'
-
-test()
