@@ -2,12 +2,12 @@ def poker(hands):
     "Return the best hand: poker([hand,...]) => hand"
     return max(hands, key=hand_rank)
 
-def flush(ranks):
+def flush(hand):
     suits = [s for r,s in hand]
     return len(set(suits)) == 1
     
 
-def straight(hand):
+def straight(ranks):
     return (max(ranks) - min(ranks) == 4) and len(set(ranks)) == 5
     
 
@@ -57,6 +57,11 @@ def test():
     fk = "9D 9H 9S 9C 7D".split() # Four of a Kind
     fh = "TD TC TH 7C 7D".split() # Full House
     tp = "5S 5H 9C 9H 6S".split() # Two Pairs
+    s1 = "AS 2S 3S 4S 5C".split() # A-5 Straight
+    s2 = "2C 3C 4C 5S 6S".split() # 2-6 Straight
+    ah = "AS 2S 3S 4S 6C".split()
+    sh = "2S 3S 4S 6C 7D".split() 
+    assert poker([s1, s2, ah, sh]) == s2
     fkranks = card_ranks(fk)
     tpranks = card_ranks(tp)
     assert kind(4, fkranks) == 9
@@ -81,3 +86,5 @@ def test():
     assert hand_rank(fk) == (7, 9, 7)
     assert hand_rank(fh) == (6, 10, 7)
     return 'tests pass'
+
+test()
