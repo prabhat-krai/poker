@@ -1,6 +1,17 @@
 def poker(hands):
-    "Return the best hand: poker([hand,...]) => hand"
+    "Return the list of best hand: poker([hand,...]) => hand"
     return max(hands, key=hand_rank)
+
+def allmax(iterable, key = None):
+    result, maxval = [], None
+    key = key or (lambda x:x)
+    for x in interable:
+        xval = key(x)
+        if (not result or xval > maxval):
+            result, maxval = [x], xval
+        elif (xval == maxval):
+            result.append(x)
+    return result
 
 def flush(hand):
     suits = [s for r,s in hand]
