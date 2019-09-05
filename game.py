@@ -41,7 +41,7 @@ def two_pair(ranks):
     if(pair and lowpair != pair):
         return (pair, lowpair)
     else:
-        return False
+        return None
         
 def hand_rank(hand):
     ranks = card_ranks(hand)
@@ -103,12 +103,12 @@ def test():
     assert hand_rank(sf) == (8, 10)
     assert hand_rank(fk) == (7, 9, 7)
     assert hand_rank(fh) == (6, 10, 7)
-    return 'tests pass'
+    print('tests pass') 
 
 
 def sampling_percentage():
     counts = [0] * 9
-    n = 800000
+    n = 80000
     loop_runs = n//10
     for i in range(loop_runs):
         for hand in deal(10):
@@ -119,3 +119,4 @@ def sampling_percentage():
         print(100*counts[i]/n)
 
 sampling_percentage()
+test()
