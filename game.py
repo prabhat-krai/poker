@@ -1,6 +1,10 @@
+import random
+#imported random to shuffle the deck of cards before making a deal 
 def poker(hands):
     "Return the list of best hand: poker([hand,...]) => hand"
     return max(hands, key=hand_rank)
+
+def deal
 
 def allmax(iterable, key = None):
     result, maxval = [], None
