@@ -49,7 +49,7 @@ def hand_rank(hand):
 def card_ranks(hand):
     ranks = ['--23456789TJQKA'.index(r) for r,s in hand]
     ranks.sort(reverse = True)
-    return ranks
+    return [5,4,3,2,1] if (ranks == [14,5,4,3,2]) else ranks
     
 def test():
     "Test cases for the functions in poker program"
