@@ -4,7 +4,10 @@ def poker(hands):
     "Return the list of best hand: poker([hand,...]) => hand"
     return max(hands, key=hand_rank)
 
-def deal
+def deal(numhands, n=5, deck = [r+s for r in "23456789TJQKA" for s in 'SHDC']):
+    random.shuffle(deck)
+    return [deck[n*i:n*(i+1)] for i in range(numhands)]
+
 
 def allmax(iterable, key = None):
     result, maxval = [], None
@@ -101,3 +104,4 @@ def test():
     assert hand_rank(fk) == (7, 9, 7)
     assert hand_rank(fh) == (6, 10, 7)
     return 'tests pass'
+
