@@ -118,5 +118,4 @@ def sampling_percentage():
     for i in  reversed(range(9)):
         print(100*counts[i]/n)
 
-sampling_percentage()
 test()
