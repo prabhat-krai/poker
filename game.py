@@ -105,3 +105,17 @@ def test():
     assert hand_rank(fh) == (6, 10, 7)
     return 'tests pass'
 
+
+def sampling_percentage():
+    counts = [0] * 9
+    n = 800000
+    loop_runs = n//10
+    for i in range(loop_runs):
+        for hand in deal(10):
+            ranking = hand_rank(hand)[0]
+            counts[ranking] += 1
+
+    for i in  reversed(range(9)):
+        print(100*counts[i]/n)
+
+sampling_percentage()
