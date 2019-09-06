@@ -13,10 +13,9 @@ def nextto(h1, h2):
     return abs(h1-h2) == 1
 
 def zebra_puzzle():
-    "Return a tuple (WATER, ZEBRA indicating their house numbers."
     houses = first, _, middle, _, _ = [1, 2, 3, 4, 5]
     orderings = list(itertools.permutations(houses)) # 1
-    return next((water, zebra)
+    return next((blue, oj)
                 for (red, green, ivory, yellow, blue) in orderings
                 if imright(green, ivory)
                 for (Englishman, Spaniard, Ukranian, Japanese, Norwegian) in orderings
