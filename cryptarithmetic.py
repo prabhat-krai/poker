@@ -22,10 +22,14 @@ def fill_in(formula):
 
 test_cases = """A**2 + B**2 == C**2 and A > 1
 TWO + TWO == FORE
-COFFEE*0.5 == CO + FFEE""".splitlines()
+COF + FEE*N == CO + FF + EE and N != 0""".splitlines()
 
 def test():
     for test_case in test_cases:
         print(solve(test_case))
 
 test()
+
+#after checking the cProfile of the program we find that eval is slowing down the 
+#program. So, we'll implement the functionality differently to speed up the 
+#program. 
