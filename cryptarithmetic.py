@@ -1,4 +1,4 @@
-import string, re, itertools
+import re, itertools
 
 def solve(formula):
     """Given a formula like 'ODD + ODD == EVEN', 
@@ -9,7 +9,7 @@ def solve(formula):
     
 def valid(f):
     try:
-        return (not re.search(r'\b0[0-9', f)) and eval(f) is True
+        return (not re.search(r'\b0[0-9]', f)) and eval(f) is True
     except ArithmeticError:
         return False
 
@@ -21,9 +21,8 @@ def fill_in(formula):
 
 
 test_cases = """A**2 + B**2 == C**2 and A > 1
-TWO + TWO == FOUR
-COFFEE**0.75 == CO + FF + EE""".splitlines()
-print(test_cases)
+TWO + TWO == FORE
+COFFEE*0.5 == CO + FFEE""".splitlines()
 
 def test():
     for test_case in test_cases:
