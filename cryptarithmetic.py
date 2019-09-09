@@ -22,7 +22,7 @@ def fill_in(formula):
 
 test_cases = """A**2 + B**2 == C**2 and A > 1
 TWO + TWO == FORE
-COF + FEE == CA + QWK + IOP""".splitlines()
+COF + COE == CA + QWK + WOP""".splitlines()
 
 def test():
 	for test_case in test_cases:
