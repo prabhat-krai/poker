@@ -1,3 +1,5 @@
+#Puzzles and Games#
+
 These programs are programming questions shaped as puzzles. 
 Go through the code and understand the basic building blocks of these puzzles while I try to find 
 the most optimzed way to solve them. 
