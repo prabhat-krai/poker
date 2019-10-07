@@ -13,32 +13,32 @@ for i in range(n):
     out_time = int(input("Out time : "))
     timing.append([in_time, out_time])
 
-def convert_into_start_and_leave_timings(timing):
+
+def convert_into_start_and_leave_timings():
     all_timing = []
     for i in range(len(timing)):
         all_timing.append([timing[i][0], 'enter'])
         all_timing.append([timing[i][1], 'exit'])
     return all_timing
 
-get_timings = convert_into_start_and_leave_timings(timing)
+
+get_timings = convert_into_start_and_leave_timings()
 get_timings.sort()
 
-def find_best_time(get_timings):
-    best_time = [float('-inf'),-1]
-    curr_time = 0
+
+def find_best_time():
+    best_time = [float('-inf'), -1]
+    curr_best = 0
     for i in range(len(get_timings)):
         if(get_timings[i][1] == 'enter'):
-            curr_time +=1
+            curr_best += 1
         else:
-            curr_time -=1
-        if(curr_time > best_time[0]):
-            best_time[0] = curr_time
+            curr_best -= 1
+        if(curr_best > best_time[0]):
+            best_time[0] = curr_best
             best_time[1] = get_timings[i][0]
-    print("Time is {} and number of celebrities will be {}".format(best_time[1], best_time[0]))
-
-find_best_time(get_timings)
-        
+    print("Time is {} and number of celebrities will be {}".format(
+        best_time[1], best_time[0]))
 
 
-
-
+find_best_time()
