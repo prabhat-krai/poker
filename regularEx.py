@@ -6,33 +6,20 @@
 # ^ checks for starts with
 # $ checks for ends with 
 
+def search(pattern, text):
+    "Match pattern anywhere in text; return longest earliest match or None."
+    for i in range(len(text)):
+        m = match(pattern, text[i:])
+        if (m is not None):
+            return m
+        
 def match(pattern, text):
-    if pattern == '':
-        return True
-    elif pattern == '$':
-        return (text == '')
-    elif len(pattern) > 1 and pattern[1] in '*?':
-        p, op, pat = pattern[0], pattern[1], pattern[2:]
-        if op == '*':
-            return match_star(p, pat, text)
-        elif op == '?':
-            if match1(p, text) and match(pat, text[1:]):
-                return True
-            else:
-                return match(pat, text)
-    else:
-        return (match1(pattern[0], text) and
-                match( pattern[1:],text[1:])) # fill in this line
-
-def match1(p, text):
-    if not text: return False
-    return p == '.' or p == text[0]
-
-def match_star(p, pattern, text):
-    return (match(pattern, text) or 
-            match1(p, text) and 
-            match_star(p, pattern, text[1:])))
-
+    "Match pattern against start of text; return longest match found or None."
+    remainders = matchset(pattern, text)
+    if remainders:
+        shortest = min(remainders, key=len)
+        return text[:(len(text) - len(shortest))]
+    
 
 
 #Grammar of a language is on which regEx works
@@ -44,19 +31,19 @@ def match_star(p, pattern, text):
 def matchset(pattern, text):
     "Match pattern at start of text; return a set of remainders of text."
     op, x, y = components(pattern)
-    if 'lit' == op:
+    if ('lit' == op):
         return set([text[len(x):]]) if text.startswith(x) else null
-    elif 'seq' == op:
+    elif ('seq' == op):
         return set(t2 for t1 in matchset(x, text) for t2 in matchset(y, t1))
-    elif 'alt' == op:
+    elif ('alt' == op):
         return matchset(x, text) | matchset(y, text)
-    elif 'dot' == op:
+    elif ('dot' == op):
         return set([text[1:]]) if text else null
-    elif 'oneof' == op:
+    elif ('oneof' == op):
         return set([text[1:]]) if text.startswith(x) else null
-    elif 'eol' == op:
+    elif ('eol' == op):
         return set(['']) if text == '' else null
-    elif 'star' == op:
+    elif ('star' == op):
         return (set([text]) |
                 set(t2 for t1 in matchset(x, text)
                     for t2 in matchset(pattern, t1) if t1 != text))
@@ -86,10 +73,20 @@ def test():
     
     return 'tests pass'
 
-print test()
+print (test())
 
 
+#filling out the APIs
 
+def lit(string):  return ('lit', string)
+def seq(x, y):    return ('seq', x, y)
+def alt(x, y):    return ('alt', x, y)
+def star(x):      return ('star', x)
+def plus(x):      return seq(x, star(x))
+def opt(x):       return alt(lit(''), x) #opt(x) means that x is optional
+def oneof(chars): return ('oneof', tuple(chars))
+dot = ('dot',)
+eol = ('eol',)
 
 
 
