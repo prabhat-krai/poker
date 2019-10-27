@@ -87,32 +87,3 @@ def opt(x):       return alt(lit(''), x) #opt(x) means that x is optional
 def oneof(chars): return ('oneof', tuple(chars))
 dot = ('dot',)
 eol = ('eol',)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
