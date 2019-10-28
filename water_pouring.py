@@ -32,6 +32,6 @@ def pour_problem(X, Y, goal, start = (0,0)):
                 else:
                     frontier.append(path_new)
 
-    return "Failed to find a way to reach the goal"
+    return "Failed to find a way to reach the goal. Cups and target did not match. Try again."
 
 print(pour_problem(9,4,2))
